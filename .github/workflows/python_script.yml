@@ -3,7 +3,7 @@ on:
     branches:
     - main
     paths: 
-    - 'app'
+    - 'app/**'
 jobs:
   run_script:
     runs-on: ubuntu-latest
