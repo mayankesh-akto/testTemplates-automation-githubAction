@@ -22,7 +22,7 @@ jobs:
 
       - name: Run script
         run: |
-          python run.py
+          python main.py
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.MY_TOKEN }}
 
