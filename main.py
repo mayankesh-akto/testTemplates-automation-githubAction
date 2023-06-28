@@ -19,7 +19,7 @@ FILE_EXTENSION = '.yaml'
 CSV_FILE_PATH = 'test.csv'
 
 EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT")
-EMAIL_SUBJECT = 'CSV Report'
+EMAIL_SUBJECT = f'CSV Report of {REPOSITORY_OWNER}/{REPOSITORY_NAME}'
 
 
 def fetch_yaml_data(access_token, yaml_url):
