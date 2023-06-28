@@ -4,14 +4,22 @@ import requests
 import yaml
 from github import Github
 
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
 
-REPOSITORY_OWNER = 'akto-api-security'
-REPOSITORY_NAME = 'akto'
-BRANCH_NAME = 'master'
-FOLDER_PATH = 'apps/dashboard/src/main/resources/inbuilt_test_yaml_files'
+
+REPOSITORY_OWNER = 'mayankesh-akto'
+REPOSITORY_NAME = 'testing'
+BRANCH_NAME = 'main'
+FOLDER_PATH = 'app'
 FILE_EXTENSION = '.yaml'
 
 CSV_FILE_PATH = 'test.csv'
+
+EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT")
+EMAIL_SUBJECT = 'CSV Report'
 
 
 def fetch_yaml_data(access_token, yaml_url):
@@ -63,6 +71,7 @@ def fetch_yaml_files(api_url, access_token):
         if response.status_code == 200:
             return response.json()
         else:
+            print(response.status_code)
             print("Failed to retrieve the repository contents.")
     except requests.exceptions.RequestException as e:
         print("Error occurred while fetching repository contents.")
@@ -83,6 +92,33 @@ def fetch_all_yaml(api_url, access_token, csv_file_path):
                 if yaml_data:
                     write_to_csv(writer, yaml_data, yaml_content)
         print(f"CSV file '{csv_file_path}' has been generated successfully.")
+        send_email(csv_file_path)
+
+def send_email(csv_file_path):
+    msg = MIMEMultipart()
+    msg['From'] = os.getenv("SMTP_USERNAME")
+    msg['To'] = EMAIL_RECIPIENT
+    msg['Subject'] = EMAIL_SUBJECT
+
+    body = 'Please find the attached CSV report.'
+    msg.attach(MIMEText(body, 'plain'))
+
+    with open(csv_file_path, 'rb') as attachment:
+        part = MIMEApplication(attachment.read())
+        part.add_header('Content-Disposition', 'attachment', filename=csv_file_path)
+        msg.attach(part)
+
+    smtp_server = 'smtp.gmail.com'
+    smtp_port = 587
+    smtp_username = os.getenv("SMTP_USERNAME")
+    smtp_password = os.getenv("SMTP_PASSWORD")
+
+    with smtplib.SMTP(smtp_server, smtp_port) as server:
+        server.starttls()
+        server.login(smtp_username, smtp_password)
+        server.send_message(msg)
+
+    print("Email sent successfully.")
 
 
 def main():
