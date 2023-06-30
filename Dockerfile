@@ -8,7 +8,7 @@ COPY ./requirements.txt /app/requirements.txt
 RUN apk update
 RUN apk add --no-cache python3
 RUN apk add --no-cache py3-pip
-RUN python3 -m pip3 install --upgrade pip3
+RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade setuptools wheel
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
