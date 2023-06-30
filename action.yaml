@@ -1,0 +1,20 @@
+name: Custom Python Script Action
+description: Runs a Python script and generates a CSV report
+
+inputs:
+  github-access-token:
+    description: 'GitHub Access Token'
+    required: true
+  email-recipient:
+    description: 'Email Recipient'
+    required: true
+  smtp-username:
+    description: 'SMTP Username'
+    required: true
+  smtp-password:
+    description: 'SMTP Password'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
