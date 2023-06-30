@@ -1,3 +1,5 @@
+name: Custom Python Script Action
+
 on:
   push:
     branches:
@@ -29,10 +31,9 @@ jobs:
         run: pip install -r requirements.txt 
         
       - name: Run script
-        run: |
-          python main.py
+        run: ./
         env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.MY_TOKEN }} 
-          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }} 
-          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }} 
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }} 
+          github-access-token: ${{ secrets.MY_TOKEN }} 
+          email-recipient: ${{ secrets.EMAIL_RECIPIENT }} 
+          smtp-username: ${{ secrets.SMTP_USERNAME }} 
+          smtp-password: ${{ secrets.SMTP_PASSWORD }} 

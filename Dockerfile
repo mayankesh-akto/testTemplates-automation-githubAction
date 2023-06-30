@@ -2,7 +2,6 @@ FROM alpine:3.10
 
 WORKDIR /app
 
-COPY ./action.yaml /app/action.yaml
 COPY ./main.py /app/main.py
 COPY ./requirements.txt /app/requirement.txt
 
