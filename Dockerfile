@@ -15,4 +15,4 @@ ENV EMAIL_RECIPIENT ${{ inputs.email-recipient }}
 ENV SMTP_USERNAME ${{ inputs.smtp-username }}
 ENV SMTP_PASSWORD ${{ inputs.smtp-password }}
 
-CMD ["python", "/app/main.py"]
+CMD ["python3", "/app/main.py"]
