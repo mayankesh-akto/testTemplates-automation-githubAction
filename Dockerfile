@@ -5,9 +5,9 @@ WORKDIR /app
 COPY ./main.py /app/main.py
 COPY ./requirements.txt /app/requirement.txt
 
-RUN apk update && 
-RUN apk add --no-cache python3 && 
-RUN apk add --no-cache py3-pip && 
+RUN apk update
+RUN apk add --no-cache python3
+RUN apk add --no-cache py3-pip
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
 ENV GITHUB_ACCESS_TOKEN ${{ inputs.github-access-token }}
