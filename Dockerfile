@@ -3,7 +3,7 @@ FROM alpine:3.10
 WORKDIR /app
 
 COPY ./main.py /app/main.py
-COPY ./requirements.txt /app/requirement.txt
+COPY ./requirements.txt /app/requirements.txt
 
 RUN apk update
 RUN apk add --no-cache python3
