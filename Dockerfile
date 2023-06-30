@@ -8,6 +8,7 @@ COPY ./requirements.txt /app/requirements.txt
 RUN apk update
 RUN apk add --no-cache python3
 RUN apk add --no-cache py3-pip
+RUN apk add --no-cache musl-dev  # Add musl-dev package
 RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade setuptools wheel
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
