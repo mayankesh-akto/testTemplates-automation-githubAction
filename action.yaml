@@ -1,5 +1,5 @@
-name: Custom Python Script Action
-description: Runs a Python script and generates a CSV report
+name: Python Script Runner with CSV Report
+description: Runs a Python script, generates a CSV report and sends the report via email using Docker.
 
 inputs:
   github-access-token:
