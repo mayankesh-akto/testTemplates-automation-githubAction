@@ -13,9 +13,9 @@ RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade setuptools wheel
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
-ENV GITHUB_ACCESS_TOKEN ${{ inputs.github-access-token }}
-ENV EMAIL_RECIPIENT ${{ inputs.email-recipient }}
-ENV SMTP_USERNAME ${{ inputs.smtp-username }}
-ENV SMTP_PASSWORD ${{ inputs.smtp-password }}
+# ENV GITHUB_ACCESS_TOKEN ${{ inputs.github-access-token }}
+# ENV EMAIL_RECIPIENT ${{ inputs.email-recipient }}
+# ENV SMTP_USERNAME ${{ inputs.smtp-username }}
+# ENV SMTP_PASSWORD ${{ inputs.smtp-password }}
 
 CMD ["python3", "/app/main.py"]
