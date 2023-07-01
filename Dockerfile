@@ -12,7 +12,7 @@ RUN apk add --no-cache build-base
 RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade setuptools wheel
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
-
+RUN chmod +x /app/main.py
 # ENV GITHUB_ACCESS_TOKEN ${{ inputs.github-access-token }}
 # ENV EMAIL_RECIPIENT ${{ inputs.email-recipient }}
 # ENV SMTP_USERNAME ${{ inputs.smtp-username }}
