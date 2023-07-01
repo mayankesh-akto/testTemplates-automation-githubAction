@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import os
 import csv
 import requests
@@ -20,7 +19,7 @@ FILE_EXTENSION = '.yaml'
 CSV_FILE_PATH = 'test.csv'
 
 # EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT")
-EMAIL_RECIPIENT = "$2"
+EMAIL_RECIPIENT = os.environ['INPUT_EMAIL-RECIPIENT']
 EMAIL_SUBJECT = f'CSV Report of {REPOSITORY_OWNER}/{REPOSITORY_NAME}'
 
 
@@ -98,8 +97,7 @@ def fetch_all_yaml(api_url, access_token, csv_file_path):
 
 def send_email(csv_file_path):
     msg = MIMEMultipart()
-    # msg['From'] = os.getenv("SMTP_USERNAME")
-    msg['From'] = "$3"
+    msg['From'] = os.getenv("SMTP_USERNAME")
     msg['To'] = EMAIL_RECIPIENT
     msg['Subject'] = EMAIL_SUBJECT
 
@@ -114,9 +112,9 @@ def send_email(csv_file_path):
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
     # smtp_username = os.getenv("SMTP_USERNAME")
-    smtp_username = "$3"
+    smtp_username = os.environ['INPUT_SMTP-USERNAME']
     # smtp_password = os.getenv("SMTP_PASSWORD")
-    smtp_password = "$4"
+    smtp_password = os.environ['INPUT_SMTP-PASSWORD']
 
     with smtplib.SMTP(smtp_server, smtp_port) as server:
         server.starttls()
@@ -128,7 +126,7 @@ def send_email(csv_file_path):
 
 def main():
     # access_token = os.getenv("GITHUB_ACCESS_TOKEN")
-    access_token = "$1"
+    access_token = os.environ['INPUT_GITHUB-ACCESS-TOKEN']
     api_url = f'https://api.github.com/repos/{REPOSITORY_OWNER}/{REPOSITORY_NAME}/contents/{FOLDER_PATH}?ref={BRANCH_NAME}'
     fetch_all_yaml(api_url, access_token, CSV_FILE_PATH)
 

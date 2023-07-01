@@ -18,8 +18,3 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.github-access-token }}
-    - ${{ inputs.email-recipient }}
-    - ${{ inputs.smtp-username }}
-    - ${{ inputs.smtp-password }}
