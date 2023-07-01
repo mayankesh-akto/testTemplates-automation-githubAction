@@ -15,10 +15,12 @@ RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade setuptools wheel
 RUN pip3 install --no-cache-dir -r requirements.txt
 RUN chmod +x main.py
+RUN ls -l /main.py
 # ENV GITHUB_ACCESS_TOKEN ${{ inputs.github-access-token }}
 # ENV EMAIL_RECIPIENT ${{ inputs.email-recipient }}
 # ENV SMTP_USERNAME ${{ inputs.smtp-username }}
 # ENV SMTP_PASSWORD ${{ inputs.smtp-password }}
 
 # CMD ["python3", "main.py"]
-ENTRYPOINT ["/main.py"]
+# ENTRYPOINT ["/main.py"]
+CMD python3 main.py
