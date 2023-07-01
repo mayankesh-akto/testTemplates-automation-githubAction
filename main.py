@@ -10,7 +10,7 @@ from email.mime.application import MIMEApplication
 
 
 REPOSITORY_OWNER = 'mayankesh-akto'
-REPOSITORY_NAME = 'testing'
+REPOSITORY_NAME = 'test-templates-automation-testing'
 BRANCH_NAME = 'main'
 FOLDER_PATH = 'app'
 FILE_EXTENSION = '.yaml'
