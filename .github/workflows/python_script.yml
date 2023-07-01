@@ -32,7 +32,7 @@ jobs:
         
       - name: Run script
         run: ./
-        env:
+        with:
           github-access-token: ${{ secrets.MY_TOKEN }} 
           email-recipient: ${{ secrets.EMAIL_RECIPIENT }} 
           smtp-username: ${{ secrets.SMTP_USERNAME }} 
