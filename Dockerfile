@@ -20,4 +20,5 @@ RUN chmod +x main.py
 # ENV SMTP_USERNAME ${{ inputs.smtp-username }}
 # ENV SMTP_PASSWORD ${{ inputs.smtp-password }}
 
-CMD ["python3", "main.py"]
+# CMD ["python3", "main.py"]
+ENTRYPOINT ["/main.py"]
