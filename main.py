@@ -97,7 +97,8 @@ def fetch_all_yaml(api_url, access_token, csv_file_path):
 
 def send_email(csv_file_path):
     msg = MIMEMultipart()
-    msg['From'] = os.getenv("SMTP_USERNAME")
+    # msg['From'] = os.getenv("SMTP_USERNAME")
+    msg['From'] = os.getenv("INPUT_SMTP-USERNAME")
     msg['To'] = EMAIL_RECIPIENT
     msg['Subject'] = EMAIL_SUBJECT
 
