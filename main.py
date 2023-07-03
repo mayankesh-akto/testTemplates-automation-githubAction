@@ -9,10 +9,10 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 
 
-REPOSITORY_OWNER = 'mayankesh-akto'
-REPOSITORY_NAME = 'test-templates-automation-testing'
-BRANCH_NAME = 'main'
-FOLDER_PATH = 'app'
+REPOSITORY_OWNER = 'akto-api-security'
+REPOSITORY_NAME = 'akto'
+BRANCH_NAME = 'master'
+FOLDER_PATH = 'apps/dashboard/src/main/resources/inbuilt_test_yaml_files'
 FILE_EXTENSION = '.yaml'
 
 EMAIL_RECIPIENT = os.environ['INPUT_EMAIL-RECIPIENT']
